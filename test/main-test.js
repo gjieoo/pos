@@ -64,7 +64,7 @@ describe('pos', () => {
     expect(itemscount).toEqual(expectItems);
   });
   it('should calculate items subtotal',()=>{
-    let itemsSubtotal=buildItemsSubtotal(promotions, buildItemsCount(allItems, inputs));
+    let itemsSubtotal=bulidItemsSubtotal(buildItemsCount(allItems, inputs),promotions);
     const expectItems=[
       {
         cartItem:{
@@ -74,7 +74,8 @@ describe('pos', () => {
             unit: '瓶',
             price: 3.00},
           count:5},
-        subtotal:12.00
+        subtotal:12.00,
+        saved:3.00
         },
       {
         cartItem:{
@@ -84,7 +85,8 @@ describe('pos', () => {
             unit: '斤',
             price: 15.00},
           count:2},
-        subtotal:30.00
+        subtotal:30.00,
+        saved:0.00
       },
       {
         cartItem:{
@@ -93,7 +95,8 @@ describe('pos', () => {
             unit: '袋',
             price: 4.50},
           count:3},
-        subtotal:9.00
+        subtotal:9.00,
+        saved:4.50
       }];
      expect(itemsSubtotal).toEqual(expectItems);
   });
