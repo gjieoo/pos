@@ -26,6 +26,7 @@ let buildItemsSubtotal=(promotions, cartItems)=>{
   return cartItems.map(cartItem=>{
     let subtotal;
     let promotion=promotions.find(promotion=>(promotion.type==='BUY_TWO_GET_ONE_FREE'));
+    let promotionBarcode=promotion.barcodes.some(promotionBarcode=>(promotion.barcodes===cartItem.item.barcode));
     if(promotion){
       let count=parseInt(cartItem.count/3);
       subtotal=cartItem.item.price*(cartItem.count-count);
